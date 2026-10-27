@@ -1,11 +1,13 @@
+use std::panic;
+
 use telemetry_batch::{BatchConfig, Batcher};
 
-fn batcher() -> Batcher {
-    Batcher::new(BatchConfig { max_batch_events: 10 }).unwrap()
-}
-
 #[test]
-#[should_panic]
 fn revoke_unimplemented_until_step_2() {
-    batcher().revoke("some-scope");
+    let result = panic::catch_unwind(|| {
+        Batcher::new(BatchConfig { max_batch_events: 10 })
+            .unwrap()
+            .revoke("some-scope")
+    });
+    assert!(result.is_err());
 }
