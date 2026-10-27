@@ -1,0 +1,15 @@
+[package]
+name = "telemetry_batch"
+version = "0.1.0"
+edition = "2021"
+description = "Buffer telemetry events and flush them in batches with per-batch aggregates"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/sirsudave-hub/telemetry-batch"
+keywords = ["telemetry", "batching", "metrics"]
+
+[lib]
+name = "telemetry_batch"
+path = "src/lib.rs"
+
+[profile.test]
+opt-level = 0
